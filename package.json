@@ -20,10 +20,8 @@
     "start": "cross-env NODE_ENV=production node app.js",
     "server": "nodemon app.js",
     "client": "npm run start --prefix client ",
-    "client:install": "npm install --prefix client",
-    "client:build": "npm run build --prefix client",
     "dev": "cross-env NODE_ENV=development concurrently \"npm run server\" \"npm run client \" ",
-    "heroku-postbuild": "npm run client:build --prefix client"
+    "heroku-postbuild": "npm install --prefix client && npm run build --prefix client"
   },
   "devDependencies": {
     "concurrently": "^5.3.0",
