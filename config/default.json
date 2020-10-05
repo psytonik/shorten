@@ -1,6 +1,0 @@
-{
-  "port": 5000,
-  "mongoUri": "mongodb+srv://anthony:hMXSwFixdGpfC8mL@cluster0.nztn1.mongodb.net/shorten?retryWrites=true&w=majority",
-  "jwtSecret": "Anthony Love Nitzan",
-  "baseURI": "http://localhost:5000"
-}
