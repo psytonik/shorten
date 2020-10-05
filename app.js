@@ -1,8 +1,8 @@
 const express = require('express');
-const config = require('config');
 const app = express();
 const mongoose = require('mongoose');
-const PORT = config.get('port') || 5000;
+require('dotenv').config();
+const PORT = process.env.PORT || 5000;
 const bodyParser = require('body-parser');
 const compression = require('compression');
 const path = require('path');
@@ -20,7 +20,7 @@ if(process.env.NODE_ENV === 'production'){
 }
 const connectDb = async () => {
     try{
-        await mongoose.connect(config.get('mongoUri'),{
+        await mongoose.connect(process.env.DB_URI,{
             useNewUrlParser: true,
             useUnifiedTopology:true,
             useCreateIndex:true
