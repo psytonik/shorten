@@ -1,11 +1,15 @@
 const express = require('express');
-const app = express();
-const mongoose = require('mongoose');
-require('dotenv').config();
+
 const PORT = process.env.PORT || 5000;
 const bodyParser = require('body-parser');
 const compression = require('compression');
 const path = require('path');
+const connectDb = require('./config/db');
+require('dotenv').config();
+
+const app = express();
+connectDb();
+
 app.use(compression());
 app.use(bodyParser.json());
 app.use('/api/auth', require('./route/authRoute'));
@@ -18,20 +22,7 @@ if(process.env.NODE_ENV === 'production'){
         res.sendFile(path.resolve(__dirname,'client','build','index.html'))
     })
 }
-const connectDb = async () => {
-    try{
-        await mongoose.connect(process.env.DB_URI,{
-            useNewUrlParser: true,
-            useUnifiedTopology:true,
-            useCreateIndex:true
-        },console.log(`> Mongo DB connected`));
-        app.listen(PORT,()=>{
-            console.log(`> Server run on ${PORT}`);
-        });
-    }catch (e) {
-        console.error(e.message);
-        process.exit(1);
-    }
-}
-connectDb();
+app.listen(PORT,()=>{
+    console.log(`> Server run on ${PORT}`);
+});
 
