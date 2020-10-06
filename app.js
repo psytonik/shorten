@@ -1,5 +1,4 @@
 const express = require('express');
-
 const bodyParser = require('body-parser');
 const compression = require('compression');
 const path = require('path');
@@ -13,7 +12,6 @@ connectDb();
 
 app.use(compression());
 app.use(bodyParser.json());
-
 //// CORS ////
 if (process.env.NODE_ENV === 'development') {
     app.use(cors({origin: `${process.env.CLIENT_URL}`}));
