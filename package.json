@@ -19,8 +19,8 @@
     "shortid": "^2.2.15"
   },
   "scripts": {
-    "start": "node app.js",
-    "server": "nodemon app.js",
+    "start": "node app",
+    "server": "nodemon app",
     "client": "npm start --prefix client ",
     "dev": "concurrently \"npm run server\" \"npm run client \" ",
     "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix client && npm run build --prefix client"

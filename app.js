@@ -24,12 +24,9 @@ app.use('/api/link', require('./route/linkRoute'));
 app.use('/t', require('./route/redirectRoute'));
 
 if(process.env.NODE_ENV === 'production'){
-    app.use('/',express.static(path.join(__dirname,'client','build')));
+    app.use(express.static('client/build',));
     app.get('*',(req,res)=>{
         res.sendFile(path.resolve(__dirname,'client','build','index.html'))
     })
 }
-app.listen(PORT,()=>{
-    console.log(`> Server run on ${PORT}`);
-});
-
+app.listen(PORT,()=>console.log(`> Server run on ${PORT}`)  );
